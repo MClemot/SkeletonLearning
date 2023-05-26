@@ -31,7 +31,7 @@ shapes = [["skel7_clean"   ,0.03 , 0.04, 0.03],
           ["skel7_var0.05r",0.03 , 0.04, 0.03],
           ["skel7_var0.1r" ,0.03 , 0.04, 0.03],
           ["skel7_var0.5r" ,0.035, 0.04, 0.05]]
-gt = "Benchmark/skel7_groundtruth.obj"
+gt = "Objects/Benchmark/skel7_groundtruth.obj"
 tabledata = []
 
 activation = "Sine"
@@ -49,7 +49,7 @@ if len(sys.argv) > 1:
             delta = shape[1]
 
             print("************ Processing Shape ",s,"***************")
-            filename = "Benchmark/{}.xyz".format(s)
+            filename = "Objects/Benchmark/{}.xyz".format(s)
             pc, nc = from_xyz_normals(filename)
             
             vertices, edges, triangles, net, skpts, upts = build_neural_skeleton(pc, nc, tv=True, activation="Sine", npl=64, dep=6, hints=nbhints, delta=delta, time_limit=time_limit)
@@ -103,11 +103,11 @@ tdist = time.time()
 #compute distances
 print("Computing distances to groundtruth")
 tabledata = []
-gt = "Benchmark/skel7_groundtruth.obj"
+gt = "Objects/Benchmark/skel7_groundtruth.obj"
 for shape in shapes:
     s = shape[0]
     print("************ {} ***************".format(s))
-    filename = "Benchmark/{}.xyz".format(s)
+    filename = "Objects/Benchmark/{}.xyz".format(s)
     
     print("Ours")
     cdf, hdf = compare_skeletal_points_to_gtskel(gt, "Results_ablation/skeletal_points_{}_{}.obj".format("Sine",s), mindist = mindist)

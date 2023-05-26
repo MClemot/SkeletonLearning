@@ -43,7 +43,7 @@ shapes = [["skel7_clean"   , 0.025, 0.06, 0.04, 0.03],
           ["skel7_var0.5r" , 0.02 , 0.05, 0.05, 0.05],
           ["skel7_var1r"   , 0.02 , 0.05, 0.05, 0.05],
           ["skel7_var2r"   , 0.02 , 0.05, 0.05, 0.05]]
-gt = "Benchmark/skel7_groundtruth.obj"
+gt = "Objects/Benchmark/skel7_groundtruth.obj"
 tabledata = []
 
 tskel = time.time()
@@ -70,7 +70,7 @@ for niter in range(0,1):
                 deltaigr = shape[3]
                 deltacov = shape[4]
                 print("************ Processing Shape ",s,"***************")
-                filename = "Benchmark/{}.xyz".format(s)
+                filename = "Objects/Benchmark/{}.xyz".format(s)
     
                 pc, nc = from_xyz_normals(filename)
                 M=1

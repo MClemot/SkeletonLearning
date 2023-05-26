@@ -53,8 +53,8 @@ if len(sys.argv) > 1:
             deltarelu = shape[2]
             deltacov = shape[3]
             print("************ Processing Shape ",s,"***************")
-            filename = "Objects/{}.obj".format(s)
-            normalfilename = "Objects/{}_normals.obj".format(s)
+            filename = "Objects/Tore/{}.obj".format(s)
+            normalfilename = "Objects/Tore/{}_normals.obj".format(s)
 
             pc = from_obj(filename)
             nc = from_obj(normalfilename)
