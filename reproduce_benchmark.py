@@ -22,13 +22,6 @@ if not os.path.exists('Networks'):
     os.makedirs('Networks')
 
 # =============================================================================
-# pretraining
-# =============================================================================
-
-# net = pretrain(dim_hidden=64, num_layers=6, skip=[], lr=2e-5, batch_size=25000, epochs=5000, activation="ReLU")
-# torch.save(net, "Pretrained/pretrained_{}_{}_{}.net".format(64, 6, "ReLU"))
-
-# =============================================================================
 # neural SDF optimization
 # =============================================================================
 
@@ -122,9 +115,9 @@ for niter in range(0,1):
         print("Siren")
         cdsiren, hdsiren = compare_skeletal_points_to_gtskel(gt, "Results_benchmark/skeletal_points_{}_{}.obj".format("siren", s), mindist=mindist)
         print("MCS")
-        cdmcs, hdmcs = compare_skeletal_points_to_gtskel(gt, "MCS/ResultsPoints/skeletal_points_MCS_{}.skel.obj".format(s), mindist=mindist, verbose=False)
+        cdmcs, hdmcs = 0,0#compare_skeletal_points_to_gtskel(gt, "MCS/ResultsPoints/skeletal_points_MCS_{}.skel.obj".format(s), mindist=mindist, verbose=False)
         print("Voxel Cores")
-        cdvx, hdvx = compare_skeletal_points_to_gtskel(gt, "comparison_results/voxelcores/skeletal_points_{}_surf_voxelcore_thinned0_02.obj".format(s), mindist = mindist, verbose=False)
+        cdvx, hdvx = 0,0#compare_skeletal_points_to_gtskel(gt, "comparison_results/voxelcores/skeletal_points_{}_surf_voxelcore_thinned0_02.obj".format(s), mindist = mindist, verbose=False)
 
         tabledata.append([ s, "{0:.2g}/{1:.2g}".format(cdn,hdn), "{0:.2g}/{1:.2g}".format(cdsiren,hdsiren), "{0:.2g}/{1:.2g}".format(cdigr,hdigr), "{0:.2g}/{1:.2g}".format(cdc,hdc), "{0:.2g}/{1:.2g}".format(cdmcs,hdmcs), "{0:.2g}/{1:.2g}".format(cdvx,hdvx)])
 
@@ -150,7 +143,6 @@ for niter in range(0,1):
 #                         "{0:.4g}/{1:.4g}".format(cdmdc[i],hdmdc[i])])
 
 col_names=["Shape", "Ours", "SIREN", "IGR", "Cov. Axis", "MCS", "Voxel Cores"]
-#col_names=["Shape", "VoxelCore"]
 
 print(tabulate(tabledata, headers=col_names, tablefmt="fancy_grid"))
-with open('benchmark_avg10runs.tex', 'w') as f: f.write(tabulate(tabledata, headers=col_names, tablefmt="latex"))
+with open('table_benchmark.tex', 'w') as f: f.write(tabulate(tabledata, headers=col_names, tablefmt="latex"))

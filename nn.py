@@ -186,7 +186,7 @@ def optimize_neural_sdf(net, optim, pc, nc, batch_size, pc_batch_size,
         #plt.savefig("skel7clean_loss.pdf")
         #plt.close()
 
-def pretrain(dim_hidden, num_layers, skip, lr, batch_size, epochs, activation='Sine'):
+def pretrain(dim_hidden, num_layers, skip, lr, batch_size, epochs, activation='Sine', plot=False):
     if activation == 'Sine':
         net = SirenNet(
             dim_in = 3,
@@ -249,7 +249,7 @@ def pretrain(dim_hidden, num_layers, skip, lr, batch_size, epochs, activation='S
             optim.step()
           
             # display the result
-            if batch%50 == 49:
+            if plot and batch%50 == 49:
                 plt.figure(figsize=(8,6))
                 plt.yscale('log')
                 plt.plot(lpc, label = f'Point cloud loss ({lpc[-1]})')
