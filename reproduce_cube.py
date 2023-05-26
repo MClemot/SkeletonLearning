@@ -10,6 +10,7 @@ from build_igr_neural_skeleton import build_igr_neural_skeleton
 from display import display_sdfColor, display_grad, display_gradgrad
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 #creating directories if they do not exist
 if not os.path.exists('Results'):
@@ -108,7 +109,7 @@ if len(sys.argv) > 1:
 
             netpath = None #"Networks/net_{}_{}_{}_{}.net".format(npl, dep, "siren", s)
             vertices, edges, triangles, net1, skpts, upts = build_siren_neural_skeleton(pc, nc, npl=64, dep=6, delta=deltasiren,
-                                                                                time_limit=time_limit, trainednet=netpath, scaleshape=False, plot=True)
+                                                                                time_limit=time_limit, trainednet=netpath, scaleshape=False)
             torch.save(net1, "Networks/net_{}_{}_{}_{}.net".format(npl, dep, "siren", s))
             to_obj(vertices*M, "Results/cvsk_{}_{}.obj".format("siren", s), lines=edges, tri=triangles)
             to_obj(upts*M, "Results/unif_points_{}_{}.obj".format("siren", s))

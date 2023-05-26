@@ -45,7 +45,7 @@ def build_igr_neural_skeleton(pc1, nc1, npl=64, dep=6, delta=0.06, scaling=1.5,
         try:
             optimize_igr_neural_sdf(net, optim, pc, nc,
                                 batch_size=25000, pc_batch_size=25000, 
-                                epochs=nepochs, lambda_pc = lambda_pc, lambda_eik=lambda_eik, plot_loss=True)
+                                epochs=nepochs, lambda_pc = lambda_pc, lambda_eik=lambda_eik)
         except KeyboardInterrupt:
             pass
         print("Optimizing NN took", '{:.2f}'.format(time.time()-t),"s.")

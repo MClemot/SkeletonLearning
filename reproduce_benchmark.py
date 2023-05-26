@@ -11,12 +11,15 @@ from build_coverage_skeleton import build_coverage_skeleton
 from distances import compare_skeletal_points_to_gtskel
 from tabulate import tabulate
 
-
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
-#creating Results dir if it does not exist
-if not os.path.exists('Results'):
-    os.makedirs('Results')
+#creating directories if they do not exist
+if not os.path.exists('Results_benchmark'):
+    os.makedirs('Results_benchmark')
+    
+if not os.path.exists('Networks'):
+    os.makedirs('Networks')
 
 # =============================================================================
 # pretraining
@@ -81,25 +84,25 @@ for niter in range(0,1):
     
                 vertices, edges, triangles, net, skpts, upts = build_neural_skeleton(pc, nc, tv = True, activation="Sine", npl=64, dep=6, hints=10000, delta=delta, time_limit=time_limit)
                 torch.save(net, "Networks/net_{}_{}_{}_{}.net".format(npl, dep, "Sine"+("" if tv else "NoTV"), s))
-                to_obj(vertices*M, "Results_benchmark1/cvsk_{}_{}.obj".format("Sine"+("" if tv else "NoTV"), s), lines=edges, tri=triangles)
-                to_obj(upts*M, "Results_benchmark1/unif_points_{}_{}.obj".format("Sine", s))
-                to_obj(skpts*M, "Results_benchmark1/skeletal_points_{}_{}.obj".format("Sine", s))
+                to_obj(vertices*M, "Results_benchmark/cvsk_{}_{}.obj".format("Sine"+("" if tv else "NoTV"), s), lines=edges, tri=triangles)
+                to_obj(upts*M, "Results_benchmark/unif_points_{}_{}.obj".format("Sine", s))
+                to_obj(skpts*M, "Results_benchmark/skeletal_points_{}_{}.obj".format("Sine", s))
     
                 vertices_siren, edges_siren, triangles_siren, net_siren, skpts_siren, upts_siren = build_siren_neural_skeleton(pc, nc, npl=64, dep=6, delta=deltasiren, time_limit=time_limit)
                 torch.save(net_siren, "Networks/net_{}_{}_{}_{}.net".format(npl, dep, "siren", s))
-                to_obj(vertices_siren*M, "Results_benchmark1/cvsk_{}_{}.obj".format("siren", s), lines=edges_siren, tri=triangles_siren)
-                to_obj(upts_siren*M, "Results_benchmark1/unif_points_{}_{}.obj".format("siren", s))
-                to_obj(skpts_siren*M, "Results_benchmark1/skeletal_points_{}_{}.obj".format("siren", s))
+                to_obj(vertices_siren*M, "Results_benchmark/cvsk_{}_{}.obj".format("siren", s), lines=edges_siren, tri=triangles_siren)
+                to_obj(upts_siren*M, "Results_benchmark/unif_points_{}_{}.obj".format("siren", s))
+                to_obj(skpts_siren*M, "Results_benchmark/skeletal_points_{}_{}.obj".format("siren", s))
     
                 vertices_igr, edges_igr, triangles_igr, net_igr, skpts_igr, upts_igr = build_igr_neural_skeleton(pc, nc, npl=64, dep = 6, delta=deltaigr, time_limit=time_limit)
                 torch.save(net_igr, "Networks/net_{}_{}_{}_{}.net".format(npl, dep, "igr", s))
-                to_obj(vertices_igr*M, "Results_benchmark1/cvsk_{}_{}.obj".format("igr",s), lines=edges_igr, tri=triangles_igr)
-                to_obj(upts_igr*M, "Results_benchmark1/unif_points_{}_{}.obj".format("igr", s))
-                to_obj(skpts_igr*M, "Results_benchmark1/skeletal_points_{}_{}.obj".format("igr", s))
+                to_obj(vertices_igr*M, "Results_benchmark/cvsk_{}_{}.obj".format("igr",s), lines=edges_igr, tri=triangles_igr)
+                to_obj(upts_igr*M, "Results_benchmark/unif_points_{}_{}.obj".format("igr", s))
+                to_obj(skpts_igr*M, "Results_benchmark/skeletal_points_{}_{}.obj".format("igr", s))
         
                 vertices_cov, edges_cov, triangles_cov, covcandidates = build_coverage_skeleton(pc, nc, delta = deltacov, npts = 10000, time_limit=time_limit)
-                to_obj(covcandidates*M, "Results/cov_cand_{}.obj".format(s))
-                to_obj(vertices_cov*M, "Results/cvsk_{}_{}.obj".format("coverage", s), lines=edges_cov, tri=triangles_cov)
+                to_obj(covcandidates*M, "Results_benchmark/cov_cand_{}.obj".format(s))
+                to_obj(vertices_cov*M, "Results_benchmark/cvsk_{}_{}.obj".format("coverage", s), lines=edges_cov, tri=triangles_cov)
                 
     print("skeletons computed in ", '{:.2f}'.format(time.time()-tskel),"s.")
     
@@ -111,13 +114,13 @@ for niter in range(0,1):
         s = shape[0]
         print("****************{}****************".format(s))
         print("Ours")
-        cdn, hdn = compare_skeletal_points_to_gtskel(gt, "Results_benchmark1/skeletal_points_{}_{}.obj".format("Sine",s), mindist = mindist)
+        cdn, hdn = compare_skeletal_points_to_gtskel(gt, "Results_benchmark/skeletal_points_{}_{}.obj".format("Sine",s), mindist = mindist)
         print("IGR")
-        cdigr, hdigr = compare_skeletal_points_to_gtskel(gt, "Results_benchmark1/skeletal_points_{}_{}.obj".format("igr",s), mindist = mindist)
+        cdigr, hdigr = compare_skeletal_points_to_gtskel(gt, "Results_benchmark/skeletal_points_{}_{}.obj".format("igr",s), mindist = mindist)
         print("Coverage")
-        cdc, hdc = compare_skeletal_points_to_gtskel(gt, "Results/cov_cand_{}.obj".format(s), mindist=mindist)
+        cdc, hdc = compare_skeletal_points_to_gtskel(gt, "Results_benchmark/cov_cand_{}.obj".format(s), mindist=mindist)
         print("Siren")
-        cdsiren, hdsiren = compare_skeletal_points_to_gtskel(gt, "Results_benchmark1/skeletal_points_{}_{}.obj".format("siren", s), mindist=mindist)
+        cdsiren, hdsiren = compare_skeletal_points_to_gtskel(gt, "Results_benchmark/skeletal_points_{}_{}.obj".format("siren", s), mindist=mindist)
         print("MCS")
         cdmcs, hdmcs = compare_skeletal_points_to_gtskel(gt, "MCS/ResultsPoints/skeletal_points_MCS_{}.skel.obj".format(s), mindist=mindist, verbose=False)
         print("Voxel Cores")
@@ -146,7 +149,7 @@ for niter in range(0,1):
 #                         "{0:.4g}/{1:.4g}".format(cdc[i],hdc[i]),
 #                         "{0:.4g}/{1:.4g}".format(cdmdc[i],hdmdc[i])])
 
-col_names=["Shape", "Ours", "SIREN", "IGR", "Cov. Axis", "MCS", "voxelcores"]
+col_names=["Shape", "Ours", "SIREN", "IGR", "Cov. Axis", "MCS", "Voxel Cores"]
 #col_names=["Shape", "VoxelCore"]
 
 print(tabulate(tabledata, headers=col_names, tablefmt="fancy_grid"))

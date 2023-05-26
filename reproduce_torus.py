@@ -7,15 +7,18 @@ import time
 from io3d import to_obj, from_obj
 from build_neural_skeleton import build_neural_skeleton
 from build_coverage_skeleton import build_coverage_skeleton
-from distances import compare_skeletons, compare_skeletal_points_to_gtpts
+from distances import compare_skeletal_points_to_gtpts
 from tabulate import tabulate
 
-
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
-#creating Results dir if it does not exist
+#creating directories if they do not exist
 if not os.path.exists('Results'):
     os.makedirs('Results')
+
+if not os.path.exists('Networks'):
+    os.makedirs('Networks')
 
 # =============================================================================
 # pretraining
@@ -150,4 +153,4 @@ print("distances computed in ", '{:.2f}'.format(time.time()-tdist),"s.")
 col_names=["Shape", "Ours", "No TV", "ReLU, No TV", "SoftPlus", "SoftPlus, No TV", "Cov Axis", "No isopoints", "No hints"]
 
 print(tabulate(tabledata, headers=col_names, tablefmt="fancy_grid"))
-with open('table_comp.tex', 'w') as f: f.write(tabulate(tabledata, headers=col_names, tablefmt="latex"))
+with open('table_torus.tex', 'w') as f: f.write(tabulate(tabledata, headers=col_names, tablefmt="latex"))
