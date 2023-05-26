@@ -1,24 +1,43 @@
 import sys, os
-sys.path.append(os.path.join(os.path.abspath('/home/julie/softs/BlenderToolbox/'))) # change this to your path to “path/to/BlenderToolbox/
-import BlenderToolBox as bt
-import os, bpy, bmesh
-import numpy as np
-import mathutils
-import math
+sys.path.append(os.path.join(os.path.abspath(os.getcwd())))
+import BlenderToolbox.BlenderToolBox as bt
+import bpy
 import time
 cwd = os.getcwd()
 
-name = "zilla"
-outputPath = os.path.join(cwd, './{}.png'.format(name))
-meshPath2 = '../Objects/{}.obj'.format(name)
-imgRes_x = 2048 # recommend > 1080 
-imgRes_y = 2048 # recommend > 1080 
-numSamples = 400 # recommend > 200
-location = (0.42443, 0, 0.63789) # (GUI: click mesh > Transform > Location)
-rotation = (129, -22, -243) # (GUI: click mesh > Transform > Rotation)
-scale = (0.9,0.9,0.9) # (GUI: click mesh > Transform > Scale)
+if not os.path.exists('Renderings'):
+    os.makedirs('Renderings')
+    
+parameters = {"bimba": ((0.58312, 0, 0.99799), (45.8, -6.74, 83.1), 1),
+           	  "birdcage": ((0, 0, 0.98), (85.1, 16.2, -198), 0.76),
+           	  "bitore": ((0.67525, 0, 0.76669), (0, 0, -159), 0.648),
+           	  "buckminsterfullerene": ((-0.20291, 0, 0.87277), (90, 0, 0), 0.808),
+           	  "bunny": ((0.44641, 0, 0.55216), (83.6, -1.35, 78.2), 0.557),
+           	  "dino": ((0, -0.25205, 0.86107), (82.3, 0, 70.1), 0.009),
+           	  "dragon": ((0,0,0.48775), (93.6,0,83.4), 0.006),
+           	  "fertility": ((0,0,0.85242), (109,0.761,-71.2), 0.75),
+           	  "guitar": ((0.58312, 0, 0.99799), (45.8, -6.74, 83.1), 1),
+           	  "hand": ((0.57859, 0, 0.63136), (90, 0, 284), 0.666),
+           	  "hand2": ((0,0,0.706), (45.9,-7.89,82.9), 0.86),
+           	  "helice": ((0.269,0,0.706), (-90,0,0), 0.35),
+           	  "hilbert": ((0,0,0.706), (0,0,42), 0.705),
+           	  "lamp": ((0, 0, 0.025907), (77, 12.1, -228), 0.01),
+           	  "metatron": ((0, 0, 0.60441), (90, 0, 19), 0.632),
+           	  "pillowbox": ((0.63455, 0, 0.80642),  (86.5, 7.72, -23.3), 0.432),
+           	  "protein": ((0,0,0.915), (0,0,0), 0.814),
+           	  "spot": ((-0.02,0.93,0.02), (85,0,-37), 1.614),
+           	  "zilla": ((0.42443, 0, 0.63789), (129, -22, -243), 0.9)}
 
-def make_tubes(curves, objects, context, obj, bevel_depth=0.005, resolution=1):
+name = "lamp"
+imgRes_x =  1080 # recommend > 1080 
+imgRes_y =  1080 # recommend > 1080 
+numSamples = 100 # recommend > 200
+location = parameters[name][0] # (GUI: click mesh > Transform > Location)
+rotation = parameters[name][1] # (GUI: click mesh > Transform > Rotation)
+scale_unif = parameters[name][2]
+scale = (scale_unif, scale_unif, scale_unif) # (GUI: click mesh > Transform > Scale)
+
+def make_tubes(curves, objects, context, obj, bevel_depth=0.01, resolution=1):
 
     curve_name = 'TubesCurve'
 
@@ -83,7 +102,7 @@ def make_tubes(curves, objects, context, obj, bevel_depth=0.005, resolution=1):
     cu_obj.data.materials.append(mat)
     print("Edges built.")
 
-def make_spheres(curves, objects, context, obj, scale=0.01):
+def make_spheres(curves, objects, context, obj, scale=0.02):
     # Create a material
     mat = bpy.data.materials.new("Redvertex")
     
@@ -113,32 +132,11 @@ def make_spheres(curves, objects, context, obj, scale=0.01):
             f.use_smooth = True 
 
     print("Sphere vertices built.")
-    
-    
 
 
-
-
-
-'''
-RENDER AN IMAGE STEP-BY-STEP:
-1. copy "template.py" to your preferred local folder
-2. In "template.py":
-    - change the second line to your path to the BlenderToolbox, such as "sys.path.append('path/to/BlenderToolbox/')"
-    - change "meshPath"
-    - set your desired material (select one from the demo scripts)
-3. run "blender --background --python template.py" in terminal, then terminate the code when it starts rendering. This step outputs a "test.blend"
-4. open "test.blend" with your blender software
-5. In blender UI, adjust:
-    - location, rotation, scale of the mesh
-    - material parameters
-6. In "template.py":
-    - type in the adjusted parameters from GUI 
-    - set outputPath and increase imgRes_x, imgRes_y, numSamples
-7. run "blender --background --python template.py" again to output your final image
-'''
 t = time.time()
 
+outputPath = os.path.join(cwd, './Renderings/{}.png'.format(name))
 
 ## initialize blender
 exposure = 1.5 
@@ -146,7 +144,7 @@ use_GPU = True
 bt.blenderInit(imgRes_x, imgRes_y, numSamples, exposure, use_GPU)
 
 ## read skeleton
-meshPath = '../ResultsObj/cvsk_Sine_{}.obj'.format(name)
+meshPath = 'Results/cvsk_Sine_{}.obj'.format(name)
 mesh = bt.readMesh(meshPath, location, rotation, scale)
 
 #add color to mesh skeleton
@@ -162,6 +160,7 @@ make_spheres(bpy.data.curves, bpy.data.objects, bpy.context, mesh)
 
 
 #read corresponding mesh
+meshPath2 = 'Objects/{}.obj'.format(name)
 #location2 = (0, 0, -0.75) # (GUI: click mesh > Transform > Location)
 #rotation2 = (90, 0, 227) # (GUI: click mesh > Transform > Rotation)
 #scale2 = (1,1,1) # (GUI: click mesh > Transform > Scale)
@@ -177,7 +176,7 @@ bt.setMat_transparent(mesh2, meshColor2, alpha, transmission)
 bpy.context.view_layer.update()
 
 ## set shading (uncomment one of them)
-#bpy.ops.object.shade_smooth() # Option1: Gouraud shading
+bpy.ops.object.shade_smooth() # Option1: Gouraud shading
 #bpy.ops.object.shade_flat() # Option2: Flat shading
 # bt.edgeNormals(mesh, angle = 10) # Option3: Edge normal shading
 
@@ -222,7 +221,7 @@ bt.setLight_ambient(color=(0.1,0.1,0.1,1))
 bt.shadowThreshold(alphaThreshold = 0.05, interpolationMode = 'CARDINAL')
 
 ## save blender file so that you can adjust parameters in the UI
-bpy.ops.wm.save_mainfile(filepath=os.getcwd() + '/test.blend')
+bpy.ops.wm.save_mainfile(filepath=os.getcwd() + './Renderings/{}.blend'.format(name))
 
 ## save rendering
 bt.renderImage(outputPath, cam)

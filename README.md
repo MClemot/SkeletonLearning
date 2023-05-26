@@ -14,9 +14,7 @@ The following Python packages are required:
 * SciPy
 * Tabulate
 
-Doing renderings requires in addition [Blender Toolbox](https://github.com/HTDerekLiu/BlenderToolbox) and the following packages:
-* bpy
-* bmesh
+Doing renderings requires in addition [Blender Toolbox](https://github.com/HTDerekLiu/BlenderToolbox) and the package bpy.
 
 ## Usage
 
@@ -31,3 +29,4 @@ The repository comes with pretrained networks, but networks can pretrained again
 * `python reproduce_ablation.py 0` reproduces the ablation study on the benchmark shape (with several levels of noise / missing parts)
 
 ### Reproducing renderings
+* `python main.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shape among the following list: bimba, birdcage, bitore, buckminsterfullerene, bunny, dino, dragon, fertility, guitar, hand, hand2, helice, hilbert, lamp, metatron, pillowbox, protein, spot, zilla.
