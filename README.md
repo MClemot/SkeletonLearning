@@ -2,7 +2,7 @@
 
 This repository contains the research code of the medial skeleton extration technique described in "Neural skeleton: implicit neural representation away from the surface", Mattéo Clémot, Julie Digne.
 
-![Graphical abstract](overview_spot.pdf)
+![Graphical abstract](overview_spot.png)
 
 ## Dependencies
 The following Python packages are required: 
