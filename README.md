@@ -5,16 +5,15 @@ This repository contains the research code of the medial skeleton extration tech
 ![Graphical abstract](overview_spot.png)
 
 ## Dependencies
-The following Python packages are required: 
-* Gudhi
-* Matplotlib
+The following Python packages are required:
+* bpy (only for renderings)
+* gudhi
+* matplotlib
 * NumPy
 * PyGEL3D 
-* PyTorch
-* SciPy
-* Tabulate
-
-Doing renderings requires in addition [Blender Toolbox](https://github.com/HTDerekLiu/BlenderToolbox) and the package bpy.
+* PyTorch (>= 1.13)
+* SciPy (>= 1.9)
+* tabulate
 
 ## Usage
 
@@ -30,3 +29,6 @@ The repository comes with pretrained networks, but networks can pretrained again
 
 ### Reproducing renderings
 * `python main.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shape among the following list: bimba, birdcage, bitore, buckminsterfullerene, bunny, dino, dragon, fertility, guitar, hand, hand2, helice, hilbert, lamp, metatron, pillowbox, protein, spot, zilla.
+* `python render.py [shape]` renders a skeleton obtained with the above command, along the original shape, using Blender. It also outputs a Blender file that can be used to modify the rendering parameters.
+
+![Graphical teaser](teaser.png)

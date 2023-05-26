@@ -28,7 +28,7 @@ parameters = {"bimba": ((0.58312, 0, 0.99799), (45.8, -6.74, 83.1), 1),
            	  "spot": ((-0.02,0.93,0.02), (85,0,-37), 1.614),
            	  "zilla": ((0.42443, 0, 0.63789), (129, -22, -243), 0.9)}
 
-name = "lamp"
+name = sys.argv[1]
 imgRes_x =  1080 # recommend > 1080 
 imgRes_y =  1080 # recommend > 1080 
 numSamples = 100 # recommend > 200
