@@ -20,15 +20,22 @@ The following Python packages are required:
 ### Pretraining
 The repository comes with pretrained networks, but networks can pretrained again by calling `python pretrain.py`.
 
-### Reproducing comparison and ablation experiments
+### Compute a skeleton
+
+
+
+### Replicability Stamp
+
+#### Reproducing comparison and ablation experiments
 * `python reproduce_benchmark.py 0` reproduces the comparison between skeletonization methods on the benchmark shape (with several level of noise / missing parts) **(Table 1)**
 * `python reproduce_cube.py 0` reproduces the comparison between some skeletonization methods on a cube shape, and produces slices of the obtained SDFs **(Figure 3)**
 * `python reproduce_fertility.py 0` reproduces the comparison between some skeletonization methods on the fertility mesh, and produces slices of the obtained SDFs **(Figure 13)**
 * `python reproduce_torus.py 0` reproduces the ablation study on a torus (with several levels of noise / missing parts) **(Table 2)**
-* `python reproduce_ablation.py 0` reproduces the ablation study on the benchmark shape (with several levels of noise / missing parts)
 
-### Reproducing renderings
-* `python main.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shape among the following list: bimba, birdcage, bitore, buckminsterfullerene, bunny, dino, dragon, fertility, guitar, hand, hand2, helice, hilbert, lamp, metatron, pillowbox, protein, spot, zilla.
+#### Reproducing renderings
+* `python main.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shape among the following list: bimba, birdcage, bitore, buckminsterfullerene, bunny, chair, dino, dragon, fertility, guitar, hand, hand2, helice, hilbert, lamp, metatron, pillowbox, protein, spot, zilla.
 * `python render.py [shape]` renders a skeleton obtained with the above command, along the original shape, using Blender. It also outputs a Blender file that can be used to modify the rendering parameters.
+
+This can be used to reproduce **Figure 1** and our results depicted in **Figures 4, 5, 6**.
 
 ![Graphical teaser](teaser.png)
