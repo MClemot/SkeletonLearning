@@ -5,6 +5,7 @@ import time
 from io3d import to_obj, from_obj
 from geometry import sample_mesh
 from build_neural_skeleton import build_neural_skeleton
+from render import render
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -70,5 +71,7 @@ for shape in objects:
         to_obj(vertices*M, "Results/cvsk_{}_{}.obj".format("Sine"+("" if tv else "NoTV"), s), lines=edges, tri=triangles)
         to_obj(upts*M, "Results/unif_points_{}_{}.obj".format("Sine"+("" if tv else "NoTV"), s))
         to_obj(skpts*M, "Results/skeletal_points_{}_{}.obj".format("Sine"+("" if tv else "NoTV"), s))
+        
+        render(s)
         
 print("skeletons computed in ", '{:.2f}'.format(time.time()-tskel),"s.")
