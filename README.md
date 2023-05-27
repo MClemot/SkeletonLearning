@@ -2,7 +2,7 @@
 
 This repository contains the research code of the medial skeleton extration technique described in "Neural skeleton: implicit neural representation away from the surface", Mattéo Clémot, Julie Digne.
 
-![Graphical abstract](overview_spot.png)
+![Graphical abstract](Images/overview_spot.png)
 
 ## Dependencies
 The following Python packages are required:
@@ -33,6 +33,6 @@ The repository comes with pretrained networks, but networks can pretrained again
 * `python reproduce_torus.py 0` reproduces the ablation study on a torus (with several levels of noise / missing parts) **(Table 2)**
 
 #### Reproducing renderings
-* `python reproduce_renderings.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shapes with our method, then render the skeleton along the original shape using Blender. It also outputs intermediary steps and a Blender file that can be used to modify the rendering parameters. The shapes can be chosen among the following list: bimba, birdcage, bitore, buckminsterfullerene, bunny, chair, dino, dragon, fertility, guitar, hand, hand2, helice, hilbert, lamp, metatron, pillowbox, protein, spot, zilla. This can be used to reproduce **Figure 1** and our results depicted in **Figures 4, 5, 6**.
+* `python reproduce_renderings.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shapes with our method, then render the skeleton along the original shape using Blender. It also outputs intermediary steps and a Blender file that can be used to modify the rendering parameters. The shapes can be chosen among the following list: bimba, birdcage, bitore, buckminsterfullerene, bunny, chair, dino, dragon, fertility, guitar, hand, hand2, helice, hilbert, lamp, metatron, pillowbox, protein, spot, zilla. This can be used to reproduce **Figure 1** and our column in **Figures 4, 5, 6**.
 
-![Graphical teaser](teaser.png)
+![Graphical teaser](Images/teaser.png)
