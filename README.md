@@ -15,6 +15,12 @@ The following Python packages are required:
 * SciPy (>= 1.9)
 * tabulate
 
+`git clone --recursive https://github.com/MClemot/SkeletonLearning/`
+
+`sudo apt-get install python3`
+
+`sudo pip3 install bpy gudhi matplotlib numpy PyGEL3D torch scipy tabulate`
+
 ## Usage
 
 ### Pretraining
