@@ -115,9 +115,9 @@ for niter in range(0,1):
         print("Siren")
         cdsiren, hdsiren = compare_skeletal_points_to_gtskel(gt, "Results_benchmark/skeletal_points_{}_{}.obj".format("siren", s), mindist=mindist)
         print("MCS")
-        cdmcs, hdmcs = 0,0#compare_skeletal_points_to_gtskel(gt, "MCS/ResultsPoints/skeletal_points_MCS_{}.skel.obj".format(s), mindist=mindist, verbose=False)
+        cdmcs, hdmcs = compare_skeletal_points_to_gtskel(gt, "Comparisons/MCS_results/skeletal_points_MCS_{}.skel.obj".format(s), mindist=mindist, verbose=False)
         print("Voxel Cores")
-        cdvx, hdvx = 0,0#compare_skeletal_points_to_gtskel(gt, "comparison_results/voxelcores/skeletal_points_{}_surf_voxelcore_thinned0_02.obj".format(s), mindist = mindist, verbose=False)
+        cdvx, hdvx = compare_skeletal_points_to_gtskel(gt, "Comparisons/voxelcores_results/skeletal_points_{}_surf_voxelcore_thinned0_02.obj".format(s), mindist = mindist, verbose=False)
 
         tabledata.append([ s, "{0:.2g}/{1:.2g}".format(cdn,hdn), "{0:.2g}/{1:.2g}".format(cdsiren,hdsiren), "{0:.2g}/{1:.2g}".format(cdigr,hdigr), "{0:.2g}/{1:.2g}".format(cdc,hdc), "{0:.2g}/{1:.2g}".format(cdmcs,hdmcs), "{0:.2g}/{1:.2g}".format(cdvx,hdvx)])
 
