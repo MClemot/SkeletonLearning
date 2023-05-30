@@ -35,7 +35,6 @@ mindist = 0.02
 tskel = time.time()
 
 objects = [["fertility_v0r"  , 0.04, 0.04, 0.04, 1000],
-           ["fertility_v0.1r", 0.04, 0.06, 0.04, 1000],
            ["fertility_v0.5r", 0.04, 0.1 , 0.2 , 1000],
            ["fertility_v1r"  , 0.06, 0.1 , 0.2 , 1000],
            ["fertility_v2r"  , 0.06, 0.1 , 0.2 , 1000]]
