@@ -27,18 +27,13 @@ mindist = 0.02
 
 tskel = time.time()
 
-objects = [["bimba", 0.04, 100],
-           ["birdcage", 0.03, 100],
+objects = [["birdcage", 0.03, 100],
            ["bitore", 0.03, 100],
            ["buckminsterfullerene", 0.03, 200],
-           ["bunny", 0.04, 100],
            ["chair", 0.03, 200],
            ["dino", 0.03, 100],
-           ["dragon", 0.04, 100],
            ["fertility", 0.04, 100],
-           ["guitar", 0.03, 100],
            ["hand", 0.03, 100],
-           ["hand2", 0.03, 100],
            ["helice", 0.03, 100],
            ["hilbert", 0.04, 100],
            ["lamp", 0.025, 100],

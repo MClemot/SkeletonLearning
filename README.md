@@ -37,7 +37,7 @@ The repository comes with pretrained networks, but networks can pretrained again
 ### Replicability Stamp
 
 #### Reproducing renderings
-* `python reproduce_renderings.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shapes with our method, then renders the skeleton along the original shape using Blender. It also outputs intermediate steps and a Blender scene file that can be used to modify the rendering parameters. The shapes can be chosen among the following list: bimba, birdcage, bitore, buckminsterfullerene, bunny, chair, dino, dragon, fertility, guitar, hand, hand2, helice, hilbert, lamp, metatron, pillowbox, protein, spot, zilla. This can be used to reproduce **Figure 1** and our column in **Figures 4, 5, 6**.
+* `python reproduce_renderings.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shapes with our method, then renders the skeleton along the original shape using Blender. It also outputs intermediate steps and a Blender scene file that can be used to modify the rendering parameters. The shapes can be chosen among the following list: birdcage, bitore, buckminsterfullerene, chair, dino, fertility, hand, helice, hilbert, lamp, metatron, protein, spot, zilla. This can be used to reproduce **Figure 1** and our column in **Figures 4, 5, 6**.
 
 #### Reproducing comparison and ablation experiments
 * `python reproduce_benchmark.py 0` reproduces the comparison between skeletonization methods on the benchmark shape (with several level of noise / missing parts) **(Table 1)**
@@ -57,6 +57,27 @@ If you use our code, please cite the following paper:
     year={2023}
   }
 ```
+
 ## Acknowledgments
 
 This work was supported by French Agence Nationale de la Recherche - TOPACS Project - ANR-19-CE45-0015
+
+
+## Licenses
+
+| Shape        | License   | Origin |
+|--------------|-----------|------------|
+| birdcage				| CC BY-SA | [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=131971)
+| bitore				|       |
+| buckminsterfullerene	| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=41141)
+| chair					| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=67855)
+| dino					|       |	
+| fertility				| AIM@SHAPE General License for Shapes | AIM@SHAPE	
+| hand					|       |
+| helice				|       |
+| hilbert				| CC BY-SA | [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=53754)
+| lamp					| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=104559)
+| metatron				| GNU - GPL	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=54725)
+| protein				| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=39878)
+| spot					| CC0 1.0 |	[Keenan Crane](https://www.cs.cmu.edu/~kmcrane/Projects/ModelRepository/)
+| zilla					| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=214246)
