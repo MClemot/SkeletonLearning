@@ -1,6 +1,8 @@
 # Neural skeleton: implicit neural representation away from the surface
 
-This repository contains the research code of the medial skeleton extration technique described in "Neural skeleton: implicit neural representation away from the surface", Mattéo Clémot, Julie Digne.
+This repository contains the code for the medial skeleton extration technique described in *Neural skeleton: implicit neural representation away from the surface*, Mattéo Clémot, Julie Digne, 2023.
+
+This code is tested under Linux 22.04.
 
 ![Graphical abstract](Images/overview_spot.png)
 
@@ -15,10 +17,14 @@ The following Python packages are required:
 * SciPy (>= 1.9)
 * tabulate
 
-`git clone --recursive https://github.com/MClemot/SkeletonLearning/`
-`sudo apt-get install python3`
-`sudo pip3 install bpy gudhi matplotlib numpy PyGEL3D scipy tabulate`
-`sudo pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118`
+To install run the following commands:
+
+```
+git clone --recursive https://github.com/MClemot/SkeletonLearning/
+sudo apt-get install python3
+sudo pip3 install bpy gudhi matplotlib numpy PyGEL3D scipy tabulate
+sudo pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
 
 ## Usage
 
@@ -31,7 +37,7 @@ The repository comes with pretrained networks, but networks can pretrained again
 ### Replicability Stamp
 
 #### Reproducing renderings
-* `python reproduce_renderings.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shapes with our method, then renders the skeleton along the original shape using Blender. It also outputs intermediary steps and a Blender file that can be used to modify the rendering parameters. The shapes can be chosen among the following list: bimba, birdcage, bitore, buckminsterfullerene, bunny, chair, dino, dragon, fertility, guitar, hand, hand2, helice, hilbert, lamp, metatron, pillowbox, protein, spot, zilla. This can be used to reproduce **Figure 1** and our column in **Figures 4, 5, 6**.
+* `python reproduce_renderings.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shapes with our method, then renders the skeleton along the original shape using Blender. It also outputs intermediate steps and a Blender scene file that can be used to modify the rendering parameters. The shapes can be chosen among the following list: bimba, birdcage, bitore, buckminsterfullerene, bunny, chair, dino, dragon, fertility, guitar, hand, hand2, helice, hilbert, lamp, metatron, pillowbox, protein, spot, zilla. This can be used to reproduce **Figure 1** and our column in **Figures 4, 5, 6**.
 
 #### Reproducing comparison and ablation experiments
 * `python reproduce_benchmark.py 0` reproduces the comparison between skeletonization methods on the benchmark shape (with several level of noise / missing parts) **(Table 1)**
@@ -41,8 +47,16 @@ The repository comes with pretrained networks, but networks can pretrained again
 
 ![Graphical teaser](Images/teaser.png)
 
-## License
-This project is under license GPLv3.
+## Citation
+If you use our code, please cite the following paper:
+```
+@article{neuralskeleton,
+    title={Neural skeleton: implicit neural representation away from the surface},
+    author={Clémot, Mattéo and Digne, Julie},
+    journal={Under review},
+    year={2023}
+  }
+```
+## Acknowledgments
 
-## Acknowledgements
-TBD
+This work was supported by French Agence Nationale de la Recherche - TOPACS Project - ANR-19-CE45-0015
