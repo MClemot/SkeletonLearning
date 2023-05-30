@@ -16,10 +16,9 @@ The following Python packages are required:
 * tabulate
 
 `git clone --recursive https://github.com/MClemot/SkeletonLearning/`
-
 `sudo apt-get install python3`
-
-`sudo pip3 install bpy gudhi matplotlib numpy PyGEL3D torch scipy tabulate`
+`sudo pip3 install bpy gudhi matplotlib numpy PyGEL3D scipy tabulate`
+`sudo pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118`
 
 ## Usage
 
@@ -41,3 +40,9 @@ The repository comes with pretrained networks, but networks can pretrained again
 * `python reproduce_torus.py 0` reproduces the ablation study on a torus (with several levels of noise / missing parts) **(Table 2)**
 
 ![Graphical teaser](Images/teaser.png)
+
+## License
+This project is under license GPLv3.
+
+## Acknowledgements
+TBD
