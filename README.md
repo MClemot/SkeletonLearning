@@ -78,5 +78,5 @@ This work was supported by French Agence Nationale de la Recherche - TOPACS Proj
 | metatron				| GNU - GPL	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=54725)
 | protein				| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=39878)
 | spot					| CC0 1.0 |	[Keenan Crane](https://www.cs.cmu.edu/~kmcrane/Projects/ModelRepository/)
-| vase                  |       |
+| vase                  |       | [Shihao Wu](https://shihaowu.net/)
 | zilla					| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=214246)
