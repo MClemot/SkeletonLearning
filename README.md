@@ -70,8 +70,6 @@ This work was supported by French Agence Nationale de la Recherche - TOPACS Proj
 | birdcage				| CC BY-SA | [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=131971)
 | bitore				|       |
 | buckminsterfullerene	| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=41141)
-| chair					| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=67855)
-| dino					|       |	
 | fertility				| AIM@SHAPE General License for Shapes | AIM@SHAPE	
 | hand					|       |
 | helice				|       |
@@ -80,4 +78,5 @@ This work was supported by French Agence Nationale de la Recherche - TOPACS Proj
 | metatron				| GNU - GPL	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=54725)
 | protein				| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=39878)
 | spot					| CC0 1.0 |	[Keenan Crane](https://www.cs.cmu.edu/~kmcrane/Projects/ModelRepository/)
+| vase                  |       |
 | zilla					| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=214246)
