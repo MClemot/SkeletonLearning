@@ -63,7 +63,7 @@ If you use our code, please cite the following paper:
 This work was supported by French Agence Nationale de la Recherche - TOPACS Project - ANR-19-CE45-0015
 
 
-## Licenses
+## Model Licenses
 
 | Shape        | License   | Origin |
 |--------------|-----------|------------|
