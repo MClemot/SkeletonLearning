@@ -2,7 +2,7 @@
 
 This repository contains the code for the medial skeleton extration technique described in *Neural skeleton: implicit neural representation away from the surface*, Mattéo Clémot, Julie Digne, 2023.
 
-This code is tested under Linux 22.04.
+This code is tested under Linux 22.04 and Windows 11.
 
 ![Graphical abstract](Images/overview_spot.png)
 
@@ -21,9 +21,11 @@ To install run the following commands:
 
 ```
 git clone --recursive https://github.com/MClemot/SkeletonLearning/
-sudo apt-get install python3
-sudo pip3 install bpy gudhi matplotlib numpy PyGEL3D scipy tabulate
-sudo pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+sudo apt install python3.10-venv
+python3.10 -m venv skelenv
+source skelenv/bin/activate
+pip3 install bpy gudhi matplotlib numpy PyGEL3D scipy tabulate
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
 ## Usage
@@ -61,7 +63,6 @@ If you use our code, please cite the following paper:
 ## Acknowledgments
 
 This work was supported by French Agence Nationale de la Recherche - TOPACS Project - ANR-19-CE45-0015
-
 
 ## Model Licenses
 
