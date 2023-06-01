@@ -21,6 +21,7 @@ To install run the following commands:
 
 ```
 git clone --recursive https://github.com/MClemot/SkeletonLearning/
+cd SkeletonLearning
 sudo apt install python3.10-venv
 python3.10 -m venv skelenv
 source skelenv/bin/activate
