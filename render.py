@@ -130,7 +130,7 @@ def render(name):
     scale_unif = parameters[name][2]
     scale = (scale_unif, scale_unif, scale_unif) # (GUI: click mesh > Transform > Scale)
     
-    outputPath = os.path.join(cwd, './Renderings/{}.png'.format(name))
+    outputPath = os.path.join(cwd, 'Renderings/{}.png'.format(name))
     
     ## initialize blender
     exposure = 1.5 
@@ -212,7 +212,7 @@ def render(name):
     bt.shadowThreshold(alphaThreshold = 0.05, interpolationMode = 'CARDINAL')
     
     ## save blender file so that you can adjust parameters in the UI
-    bpy.ops.wm.save_mainfile(filepath=os.getcwd() + './Renderings/{}.blend'.format(name))
+    bpy.ops.wm.save_mainfile(filepath=os.getcwd() + '/Renderings/{}.blend'.format(name))
     
     ## save rendering
     bt.renderImage(outputPath, cam)
