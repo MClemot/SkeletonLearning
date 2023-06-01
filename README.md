@@ -7,6 +7,8 @@ This code is tested under Linux 22.04 and Windows 11.
 ![Graphical abstract](Images/overview_spot.png)
 
 ## Dependencies
+We use python3.10 for compatibility with the bpy library
+
 The following Python packages are required:
 * bpy (only for renderings)
 * gudhi
@@ -16,6 +18,7 @@ The following Python packages are required:
 * PyTorch (>= 1.13)
 * SciPy (>= 1.9)
 * tabulate
+
 
 To install run the following commands:
 
@@ -39,10 +42,25 @@ The repository comes with pretrained networks, but networks can pretrained again
 
 ### Replicability Stamp
 
+TLDR: to compute and render the skeleton of the <i>spot</i> shape, run:
+```
+python reproduce_renderings.py spot
+```
+This produces several files:
+- Results/cvsk_Sine_spot.obj : the skeleton simplicial complex
+- Results/unif_points_Sine_spot.obj : point set uniformly sampled on the surface (output of the uniform sampling step)
+- Results/skeletal_points_Sine_spot.obj : extracted skeletal points (output of the skeleton tracing)
+- Networks/net_64_6_Sine_spot.net : trained INR
+- Renderings/spot.blend : saved blender file
+- Renderings/spot.png : rendering of the shape and its skeleton
+
 #### Reproducing renderings
 * `python reproduce_renderings.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shapes with our method, then renders the skeleton along the original shape using Blender. It also outputs intermediate steps and a Blender scene file that can be used to modify the rendering parameters. The shapes can be chosen among the following list: birdcage, bitore, buckminsterfullerene, chair, dino, fertility, hand, helice, hilbert, lamp, metatron, protein, spot, zilla. This can be used to reproduce **Figure 1** and our column in **Figures 4, 5, 6**.
 
 #### Reproducing comparison and ablation experiments
+
+Notice that some of these experiments can take up to several hours.
+
 * `python reproduce_benchmark.py 0` reproduces the comparison between skeletonization methods on the benchmark shape (with several level of noise / missing parts) **(Table 1)**
 * `python reproduce_cube.py 0` reproduces the comparison between some skeletonization methods on a cube shape, and produces slices of the obtained SDFs **(Figure 3)**
 * `python reproduce_fertility.py 0` applies some skeletonization methods on the fertility mesh **(skeletons depicted in Figure 12)**, and produces slices of the obtained SDFs **(Figure 13)**
@@ -56,7 +74,7 @@ If you use our code, please cite the following paper:
 @article{neuralskeleton,
     title={Neural skeleton: implicit neural representation away from the surface},
     author={Clémot, Mattéo and Digne, Julie},
-    journal={Under review},
+    journal={Computer & Graphics 2023, Proceedings SMI 2023},
     year={2023}
   }
 ```
