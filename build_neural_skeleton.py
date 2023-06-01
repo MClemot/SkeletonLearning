@@ -53,7 +53,7 @@ def build_neural_skeleton(pc1, nc1,
             nhints_ends=10000
         
         t = time.time()
-        print(tv)
+      
         try:
             optimize_neural_sdf(net, optim, pc, nc,
                                 batch_size=25000, pc_batch_size=25000, 
