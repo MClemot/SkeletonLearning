@@ -7,9 +7,7 @@ This code is tested under Linux 22.04 and Windows 11.
 ![Graphical abstract](Images/overview_spot.png)
 
 ## Dependencies
-We use python3.10 for compatibility with the bpy library
-
-The following Python packages are required:
+We use Python 3.10 for compatibility with the bpy library. The following packages are required:
 * bpy (only for renderings)
 * gudhi
 * matplotlib
@@ -19,9 +17,7 @@ The following Python packages are required:
 * SciPy (>= 1.9)
 * tabulate
 
-
 To install run the following commands:
-
 ```
 git clone --recursive https://github.com/MClemot/SkeletonLearning/
 cd SkeletonLearning
@@ -42,7 +38,7 @@ The repository comes with pretrained networks, but networks can pretrained again
 
 ### Replicability Stamp
 
-TLDR: to compute and render the skeleton of the <i>spot</i> shape, run:
+TLDR: to compute and render the skeleton of the *spot* shape, run:
 ```
 python reproduce_renderings.py spot
 ```
@@ -55,7 +51,7 @@ This produces several files:
 - Renderings/spot.png : rendering of the shape and its skeleton
 
 #### Reproducing renderings
-* `python reproduce_renderings.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shapes with our method, then renders the skeleton along the original shape using Blender. It also outputs intermediate steps and a Blender scene file that can be used to modify the rendering parameters. The shapes can be chosen among the following list: birdcage, bitore, buckminsterfullerene, fertility, hand, helice, hilbert, lamp, metatron, protein, spot, zilla. This can be used to reproduce **Figure 1** and our column in **Figures 4, 5, 6**.
+* `python reproduce_renderings.py [shape1] [shape2] [shape3] ...` computes the neural skeleton of the given shapes with our method, then renders the skeleton along the original shape using Blender. It also outputs intermediate steps and a Blender scene file that can be used to modify the rendering parameters. The shapes can be chosen among the following list: *birdcage*, *bitore*, *buckminsterfullerene*, *fertility*, *hand*, *helice*, *hilbert*, *lamp*, *metatron*, *protein*, *spot*, *zilla*. This can be used to reproduce **Figure 1** and our column in **Figures 4, 5, 6**.
 
 #### Reproducing comparison and ablation experiments
 

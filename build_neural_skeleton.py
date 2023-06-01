@@ -84,22 +84,22 @@ def build_neural_skeleton(pc1, nc1,
     
     cvskpts, edges, triangles = coverage_skeleton(candidates, samples, delta=delta, time_limit=time_limit)#, factor=1.5) #0.08
 
-    print("Coverage skeleton obtained in ", '{:.2f}'.format(time.time()-tskel)," s.") 
+    print("Coverage skeleton obtained in", '{:.2f}'.format(time.time()-tskel)," s.") 
 
     #putting the samples back to their original position and scale
     skpts = candidates.cpu().numpy() * scale.cpu().numpy() + center.cpu().numpy()
     upts = samples.detach().cpu().numpy() * scale.cpu().numpy() + center.cpu().numpy()
 
-    print("Total computation time ", '{:.2f}'.format(time.time()-tinit)," s.")
+    print("Total computation time", '{:.2f}'.format(time.time()-tinit)," s.")
 
 
 
     if cvskpts.shape[0] == 0 :
         print("Infeasible problem no skeleton found, try tweaking the parameters")
-        print("Coverage skeleton failed after ", time.time()-t,"s.")
+        print("Coverage skeleton failed after", time.time()-t,"s.")
 
     else:
-        print("Coverage skeleton built in ", '{:.2f}'.format(time.time()-t),"s.")
+        print("Coverage skeleton built in", '{:.2f}'.format(time.time()-t),"s.")
         #putting the skeletal points back to their original position and scale
         cvskpts = cvskpts * scale.cpu().numpy() + center.cpu().numpy()
 

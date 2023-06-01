@@ -66,4 +66,4 @@ for shape in objects:
         
         render(s)
         
-print("skeletons computed in ", '{:.2f}'.format(time.time()-tskel),"s.")
+print("Skeletons computed and rendered in", '{:.2f}'.format(time.time()-tskel),"s.")

@@ -40,4 +40,4 @@ vertices, edges, triangles, net, skpts, upts = build_neural_skeleton(pc, nc, tv=
 
 to_obj(vertices * M, str_output, lines=edges, tri=triangles)
         
-print("skeletons computed in ", '{:.2f}'.format(time.time()-tskel),"s.")
+print("Skeleton computed in", '{:.2f}'.format(time.time()-tskel),"s.")
