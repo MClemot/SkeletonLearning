@@ -34,14 +34,12 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 The repository comes with pretrained networks, but networks can pretrained again by calling `python pretrain.py`.
 
 ### Compute a skeleton
-* `python main.py [input] [output]` computes a neural skeleton of the given input file, that can be either a `.obj` mesh file that will be sampled, or a `.xyz` file directly containing a point cloud with normals. It outputs a `.obj` skeletal mesh file.
+`python main.py [input] [output]` computes a neural skeleton of the given input file, that can be either a `.obj` mesh file that will be sampled, or a `.xyz` file directly containing a point cloud with normals. It outputs a `.obj` skeletal mesh file.
 
 ### Replicability Stamp
 
-TLDR: to compute and render the skeleton of the *spot* shape, run:
-```
-python reproduce_renderings.py spot
-```
+TLDR: to compute and render the skeleton of the *spot* shape, run `python reproduce_renderings.py spot`.
+
 This produces several files:
 - Results/cvsk_Sine_spot.obj : the skeleton simplicial complex
 - Results/unif_points_Sine_spot.obj : point set uniformly sampled on the surface (output of the uniform sampling step)
@@ -56,7 +54,6 @@ This produces several files:
 #### Reproducing comparison and ablation experiments
 
 Notice that some of these experiments can take up to several hours.
-
 * `python reproduce_benchmark.py 0` reproduces the comparison between skeletonization methods on the benchmark shape (with several level of noise / missing parts) **(Table 1)**
 * `python reproduce_cube.py 0` reproduces the comparison between some skeletonization methods on a cube shape, and produces slices of the obtained SDFs **(Figure 3)**
 * `python reproduce_fertility.py 0` applies some skeletonization methods on the fertility mesh **(skeletons depicted in Figure 12)**, and produces slices of the obtained SDFs **(Figure 13)**
@@ -84,11 +81,8 @@ This work was supported by French Agence Nationale de la Recherche - TOPACS Proj
 | Shape        | License   | Origin |
 |--------------|-----------|------------|
 | birdcage				| CC BY-SA | [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=131971)
-| bitore				|       |
 | buckminsterfullerene	| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=41141)
 | fertility				| AIM@SHAPE General License for Shapes | AIM@SHAPE	
-| hand					|       |
-| helice				|       |
 | hilbert				| CC BY-SA | [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=53754)
 | lamp					| CC BY	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=104559)
 | metatron				| GNU - GPL	| [Thingi10K](https://ten-thousand-models.appspot.com/detail.html?file_id=54725)
