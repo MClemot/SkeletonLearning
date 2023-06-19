@@ -17,7 +17,7 @@ We use Python 3.10 for compatibility with the bpy library. The following package
 * SciPy (>= 1.9)
 * tabulate
 
-To install run the following commands:
+To install on Linux, run the following commands:
 ```
 git clone --recursive https://github.com/MClemot/SkeletonLearning/
 cd SkeletonLearning
