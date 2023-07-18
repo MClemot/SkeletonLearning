@@ -1,8 +1,9 @@
 # Neural skeleton: implicit neural representation away from the surface
 
-This repository contains the code for the medial skeleton extration technique described in *Neural skeleton: implicit neural representation away from the surface*, Mattéo Clémot, Julie Digne, 2023.
+This repository contains the code for the medial skeleton extration technique described in [*Neural skeleton: implicit neural representation away from the surface*](https://hal.science/hal-04159959), Mattéo Clémot, Julie Digne, Computer & Graphics, Proceedings Shape Modeling International, 2023. Our paper was granted the [Graphics Replicability Stamp](https://www.replicabilitystamp.org/#https-github-com-mclemot-skeletonlearning) and the SMI 2023 **Best Paper Award**. 
 
-This code is tested under Linux 22.04 and Windows 11.
+The code is tested under Linux 22.04 and Windows 11.
+
 
 ![Graphical abstract](Images/overview_spot.png)
 
