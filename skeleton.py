@@ -117,7 +117,7 @@ def coverage_skeleton(skpts, pc, delta, factor=None, time_limit=120):
     if factor == None:
         weights = np.concatenate((cvskpts_sdf + delta, np.zeros((pc.shape[0])) + delta))
     else:
-        weights = np.concatenate((cvskpts_sdf*factor, np.zeros((pc.shape[0]))+delta))
+        weights = np.concatenate((cvskpts_sdf*factor, np.zeros((pc.shape[0]))))
     
     alpha_complex = gudhi.alpha_complex.AlphaComplex(points=vertices, weights=list(weights**2))
     simplex_tree = alpha_complex.create_simplex_tree()

@@ -10,7 +10,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def build_neural_skeleton(pc1, nc1,
                           tv = True, activation="Sine", npl=64, dep=6,
-                          hints=1000, delta=0.06, scaling=1.5,
+                          hints=1000, delta=0.06, scaling=None,
                           lambda_pc = 100, lambda_eik=2e2, lambda_hint=1e2, lambda_tv=2e1,
                           resampling=True, trainednet=None, time_limit=120, scaleshape=True):
 
@@ -82,7 +82,7 @@ def build_neural_skeleton(pc1, nc1,
     
     candidates = neural_candidates(sk, reduce_radius=0.01)
     
-    cvskpts, edges, triangles = coverage_skeleton(candidates, samples, delta=delta, time_limit=time_limit)#, factor=1.5) #0.08
+    cvskpts, edges, triangles = coverage_skeleton(candidates, samples, delta=delta, factor=scaling, time_limit=time_limit)
 
     print("Coverage skeleton obtained in", '{:.2f}'.format(time.time()-tskel)," s.") 
 
