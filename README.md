@@ -32,7 +32,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 ## Usage
 
 ### Pretraining
-The repository comes with pretrained networks, but networks can pretrained again by calling `python pretrain.py`.
+The repository comes with pretrained networks, but networks can be pretrained again by calling `python pretrain.py`.
 
 ### Compute a skeleton
 `python main.py [input] [output]` computes a neural skeleton of the given input file, that can be either a `.obj` mesh file that will be sampled, or a `.xyz` file directly containing a point cloud with normals. It outputs a `.obj` skeletal mesh file.
